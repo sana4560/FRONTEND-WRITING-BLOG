@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Button, TextField, Typography, Card } from '@mui/material';
-import { useResetPassword } from '../components/user/passwordResetState';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from "react";
+import { Button, TextField, Typography, Card } from "@mui/material";
+import { useResetPassword } from "../components/user/passwordResetState";
+import { useNavigate } from "react-router-dom";
 
 export default function ResetPassword() {
-  const [otp, setOtp] = useState(['', '', '', '']);
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [otp, setOtp] = useState(["", "", "", ""]);
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [timer, setTimer] = useState(60);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [otpVerified, setOtpVerified] = useState(false);
   const { isResetPasswordOpen, closeResetPassword } = useResetPassword();
   const navigate = useNavigate();
@@ -32,14 +32,14 @@ export default function ResetPassword() {
 
   const handleVerifyOtp = async () => {
     try {
-      const response = await fetch('http://localhost:8000/users/verify-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ otp: otp.join('') }),
+      const response = await fetch(`${process.env.BASE_URL}/users/verify-otp`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ otp: otp.join("") }),
       });
 
       if (!response.ok) {
-        setError('Failed to verify OTP. Please try again.');
+        setError("Failed to verify OTP. Please try again.");
         return;
       }
 
@@ -47,13 +47,13 @@ export default function ResetPassword() {
       if (data) {
         setOtpVerified(true);
         setTimer(0);
-        console.log('OTP Verified Successfully');
+        console.log("OTP Verified Successfully");
       } else {
-        setError(data.message || 'Invalid OTP');
+        setError(data.message || "Invalid OTP");
       }
     } catch (error) {
-      console.error('Error:', error);
-      setError('An error occurred while verifying OTP. Please try again.');
+      console.error("Error:", error);
+      setError("An error occurred while verifying OTP. Please try again.");
     }
   };
 
@@ -64,27 +64,30 @@ export default function ResetPassword() {
     }
 
     try {
-      const response = await fetch('http://localhost:8000/users/reset-password', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ newPassword }),
-      });
+      const response = await fetch(
+        `${process.env.BASE_URL}/users/reset-password`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ newPassword }),
+        }
+      );
 
       if (!response.ok) {
-        setError('Failed to reset password. Please try again.');
+        setError("Failed to reset password. Please try again.");
         return;
       }
 
       const data = await response.json();
       if (data.success) {
-        alert('Password reset successful');
-        navigate('/home'); // Navigate back to home after successful reset
+        alert("Password reset successful");
+        navigate("/home"); // Navigate back to home after successful reset
       } else {
-        setError(data.message || 'Error resetting password');
+        setError(data.message || "Error resetting password");
       }
     } catch (error) {
-      console.error('Error:', error);
-      setError('An error occurred. Please try again.');
+      console.error("Error:", error);
+      setError("An error occurred. Please try again.");
     }
   };
 
@@ -107,22 +110,22 @@ export default function ResetPassword() {
   return (
     <div
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '100vh',
-        padding: '20px',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+        padding: "20px",
       }}
     >
       <Card
         style={{
-          width: '400px',
-          height: otpVerified ? '500px' : '450px',
-          padding: '20px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
+          width: "400px",
+          height: otpVerified ? "500px" : "450px",
+          padding: "20px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <Typography variant="h6" gutterBottom>
@@ -130,7 +133,14 @@ export default function ResetPassword() {
         </Typography>
 
         {!otpVerified && (
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginBottom: '16px' }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "8px",
+              marginBottom: "16px",
+            }}
+          >
             {otp.map((digit, index) => (
               <TextField
                 key={index}
@@ -139,8 +149,8 @@ export default function ResetPassword() {
                 value={digit}
                 onChange={(e) => handleOtpChange(e, index)}
                 inputProps={{ maxLength: 1 }}
-                style={{ width: '50px' }}
-                sx={{ textAlign: 'center' }}
+                style={{ width: "50px" }}
+                sx={{ textAlign: "center" }}
                 inputRef={(el) => (otpRefs.current[index] = el)}
               />
             ))}
@@ -168,7 +178,7 @@ export default function ResetPassword() {
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               fullWidth
-              sx={{ marginBottom: '16px' }}
+              sx={{ marginBottom: "16px" }}
             />
 
             <TextField
@@ -178,21 +188,34 @@ export default function ResetPassword() {
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
               fullWidth
-              sx={{ marginBottom: '16px' }}
+              sx={{ marginBottom: "16px" }}
             />
           </>
         )}
 
         {!otpVerified && (
-          <Typography variant="body2" sx={{ textAlign: 'center', marginBottom: '16px' }}>
-            Time Remaining: {Math.floor(timer / 60)}:{(timer % 60).toString().padStart(2, '0')}
+          <Typography
+            variant="body2"
+            sx={{ textAlign: "center", marginBottom: "16px" }}
+          >
+            Time Remaining: {Math.floor(timer / 60)}:
+            {(timer % 60).toString().padStart(2, "0")}
           </Typography>
         )}
 
-        {error && <Typography sx={{ color: 'red', textAlign: 'center' }}>{error}</Typography>}
+        {error && (
+          <Typography sx={{ color: "red", textAlign: "center" }}>
+            {error}
+          </Typography>
+        )}
 
         {otpVerified && (
-          <Button variant="contained" color="primary" onClick={handleResetPassword} fullWidth>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleResetPassword}
+            fullWidth
+          >
             Reset Password
           </Button>
         )}

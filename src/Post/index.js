@@ -37,7 +37,7 @@ export default function Post() {
       return;
     }
     if (!userId) {
-      showWarningSnackbar("please First Login.");
+      showWarningSnackbar("please First Login website.");
       return;
     }
 
@@ -54,7 +54,7 @@ export default function Post() {
 
       try {
         const response = await fetch(
-          `http://localhost:8000/post/uploadpost/${userId}`,
+          `${process.env.BASE_URL}/post/uploadpost/${userId}`,
           {
             method: "POST",
             body: formData,

@@ -37,7 +37,7 @@ export default function Comments({
     const sendComment = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/post/comments/${postId}`,
+          `${process.env.BASE_URL}/post/comments/${postId}`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
