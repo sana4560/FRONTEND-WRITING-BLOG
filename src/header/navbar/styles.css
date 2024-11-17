@@ -1,0 +1,17 @@
+nav{
+    display:flex;
+    justify-content: flex-end;
+    
+}
+.nav-title {
+    display: flex;
+    justify-content: flex-start;  /* Align to the start on larger screens */
+    width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .nav-title {
+      justify-content: center;  /* Center it on mobile screens */
+    }
+  }
+  
