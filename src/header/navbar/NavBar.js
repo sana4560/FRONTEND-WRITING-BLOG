@@ -56,9 +56,6 @@ export default function NavBar() {
               listStyle: "none",
             }}
           >
-            <ListItem sx={{ display: "flex", justifyContent: "flex-start" }}>
-              <h2 style={{ fontStyle: "italic" }}>Writings</h2>
-            </ListItem>
             <ListItem>
               <Button href="/home" variant="text" sx={buttonStyle}>
                 Home
