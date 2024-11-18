@@ -58,7 +58,6 @@ export default function Categories({ value, onChange }) {
           <MenuItem value="Romance">Romance</MenuItem>
           <MenuItem value="Science">Science</MenuItem>
           <MenuItem value="Thriller">Thriller</MenuItem>
-          <MenuItem value="Comedy">Comedy</MenuItem>
           <MenuItem value="Travel">Travel</MenuItem>
           <MenuItem value="Phsycology">Phsycology</MenuItem>
         </Select>

@@ -172,7 +172,7 @@ export default function SignIn({ open, onClose, handleSignUpOpen }) {
           )}
           {/* User Name Input */}
           <TextField
-            id="signin-email"
+            id="email"
             label="Email"
             variant="outlined"
             value={email}
@@ -183,7 +183,7 @@ export default function SignIn({ open, onClose, handleSignUpOpen }) {
 
           {/* Password Input */}
           <TextField
-            id="signin-password"
+            id="password"
             label="Password"
             type="password"
             variant="outlined"
