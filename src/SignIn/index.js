@@ -52,6 +52,8 @@ export default function SignIn({ open, onClose, handleSignUpOpen }) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password }),
         });
+        console.log("API URL:", `${process.env.BASE_URL}/users/signin`);
+
         const data = await response.json();
         if (!response.ok) {
           setError(data.message);
