@@ -114,7 +114,7 @@ const PostItem = ({ post, initialCommentCount, showDelete, onDelete }) => {
           overflow: "hidden",
           background: "rgba(173, 216, 230, 0.1)",
           transition: "all 0.3s ease-in-out", // Smooth transition for expansion
-          minHeight: "120px", // Set a minimum height to ensure consistency
+          minHeight: "220px", // Set a minimum height to ensure consistency
         }}
         onClick={() => setExpandStory((prev) => !prev)} // Toggle expandStory
       >
