@@ -114,6 +114,7 @@ const PostItem = ({ post, initialCommentCount, showDelete, onDelete }) => {
           overflow: "hidden",
           background: "rgba(173, 216, 230, 0.1)",
           transition: "all 0.3s ease-in-out", // Smooth transition for expansion
+          minHeight: "120px", // Set a minimum height to ensure consistency
         }}
         onClick={() => setExpandStory((prev) => !prev)} // Toggle expandStory
       >
@@ -130,6 +131,7 @@ const PostItem = ({ post, initialCommentCount, showDelete, onDelete }) => {
             paddingLeft: "24px", // Adjust padding for left quote icon
             paddingRight: "24px", // Adjust padding for right quote icon
             transition: "all 0.3s ease-in-out", // Smooth transition for content
+            minHeight: "120px", // Ensure typography takes up at least 120px height
           }}
         >
           <BiSolidQuoteAltLeft
