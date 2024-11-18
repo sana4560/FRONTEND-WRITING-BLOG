@@ -52,7 +52,7 @@ export default function Categories({ value, onChange }) {
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem value="BookReview">Comedy</MenuItem>
+          <MenuItem value="BookReview">BookReview</MenuItem>
           <MenuItem value="Comedy">Comedy</MenuItem>
           <MenuItem value="Fiction">Fiction</MenuItem>
           <MenuItem value="Romance">Romance</MenuItem>

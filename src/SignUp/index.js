@@ -121,7 +121,7 @@ export default function SignUp({ open, handleSignInOpen, onClose }) {
       </DialogTitle>
       <DialogContent sx={{ margin: "10px", paddingTop: "20px" }}>
         <TextField
-          id="signup-email"
+          id="email"
           label="Email"
           type="email"
           variant="outlined"
@@ -140,7 +140,7 @@ export default function SignUp({ open, handleSignInOpen, onClose }) {
           sx={{ marginTop: "5px", marginBottom: "5px" }}
         />
         <TextField
-          id="signup-password"
+          id="password"
           label="Password"
           type="password"
           variant="outlined"
