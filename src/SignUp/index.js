@@ -60,11 +60,14 @@ export default function SignUp({ open, handleSignInOpen, onClose }) {
       }
 
       try {
-        const response = await fetch(`${process.env.BASE_URL}/users/signup`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, username, password }),
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_BASE_URL}/users/signup`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, username, password }),
+          }
+        );
 
         if (!response.ok) {
           console.log("Error submitting signup details");

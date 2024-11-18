@@ -16,7 +16,9 @@ const PostList = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch(`${process.env.BASE_URL}/post/AllPosts`);
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/post/AllPosts`
+      );
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }

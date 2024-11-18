@@ -47,12 +47,18 @@ export default function SignIn({ open, onClose, handleSignUpOpen }) {
   useEffect(() => {
     const postData = async () => {
       try {
-        const response = await fetch(`${process.env.BASE_URL}/users/signin`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, password }),
-        });
-        console.log("API URL:", `${process.env.BASE_URL}/users/signin`);
+        const response = await fetch(
+          `${process.env.REACT_APP_BASE_URL}/users/signin`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
+          }
+        );
+        console.log(
+          "API URL:",
+          `${process.env.REACT_APP_BASE_URL}/users/signin`
+        );
 
         const data = await response.json();
         if (!response.ok) {
@@ -100,7 +106,7 @@ export default function SignIn({ open, onClose, handleSignUpOpen }) {
       const generateMail = async () => {
         try {
           const response = await fetch(
-            `${process.env.BASE_URL}/users/forget-password`,
+            `${process.env.REACT_APP_BASE_URL}/users/forget-password`,
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },

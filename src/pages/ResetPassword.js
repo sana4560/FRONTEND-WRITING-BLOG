@@ -32,11 +32,14 @@ export default function ResetPassword() {
 
   const handleVerifyOtp = async () => {
     try {
-      const response = await fetch(`${process.env.BASE_URL}/users/verify-otp`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ otp: otp.join("") }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/users/verify-otp`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ otp: otp.join("") }),
+        }
+      );
 
       if (!response.ok) {
         setError("Failed to verify OTP. Please try again.");

@@ -4,7 +4,7 @@ export const sendLike = async (postId, userId) => {
   console.log("console.log poatId", userId);
   try {
     const response = await fetch(
-      `${process.env.BASE_URL}/post/like/${postId}`,
+      `${process.env.REACT_APP_BASE_URL}/post/like/${postId}`,
       {
         method: "POST",
         headers: {

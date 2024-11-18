@@ -17,11 +17,14 @@ export default function SearchBar() {
   const debouncedSearch = debounce(async (query) => {
     if (query.trim() === "") return; // Avoid empty query searches
     try {
-      const response = await fetch(`${process.env.BASE_URL}/post/search`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ searchQuery: query }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/post/search`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ searchQuery: query }),
+        }
+      );
 
       const data = await response.json();
       if (!data || data.length === 0) {

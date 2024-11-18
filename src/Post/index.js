@@ -54,7 +54,7 @@ export default function Post() {
 
       try {
         const response = await fetch(
-          `${process.env.BASE_URL}/post/uploadpost/${userId}`,
+          `${process.env.REACT_APP_BASE_URL}/post/uploadpost/${userId}`,
           {
             method: "POST",
             body: formData,

@@ -8,7 +8,7 @@ const RecentPosts = () => {
     const fetchRecentPosts = async () => {
       try {
         const response = await fetch(
-          `${process.env.BASE_URL}/post/recentPosts`
+          `${process.env.REACT_APP_BASE_URL}/post/recentPosts`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");

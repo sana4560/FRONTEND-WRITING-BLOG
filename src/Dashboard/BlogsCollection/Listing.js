@@ -27,7 +27,7 @@ export default function Listing() {
 
       try {
         const response = await fetch(
-          `${process.env.BASE_URL}/post/userpost/${userId}`
+          `${process.env.REACT_APP_BASE_URL}/post/userpost/${userId}`
         ); // Correct URL format
         if (!response.ok) {
           throw new Error("Network response was not ok");

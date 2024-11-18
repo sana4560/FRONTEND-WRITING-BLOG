@@ -2,7 +2,7 @@
 const DeletePost = async (postId) => {
   try {
     const response = await fetch(
-      `${process.env.BASE_URL}/post/deletepost/${postId}`,
+      `${process.env.REACT_APP_BASE_URL}/post/deletepost/${postId}`,
       {
         method: "POST", // Using POST method for deletion
         headers: {
